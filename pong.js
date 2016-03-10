@@ -1,14 +1,34 @@
 /**
  * Created by Brad on 2016-03-10.
  */
+
 var animate = window.requestAnimationFrame ||
     window.webkitCancelAnimationFrame ||
     window.mozRequestAnimationFrame ||
     function(callback) { window.setTimeout(callback, 1000/60) };
 
 var canvas = document.createElement('canvas');
-var width = 600;
-var hiegth = 800;
+var width = 500;
+var height = 600;
 canvas.width= width;
-canvas.hiegth= hiegth;
+canvas.height= height;
 var context= canvas.getContext('2d');
+
+window.onload = function() {
+    document.body.appendChild(canvas);
+    animate(step);
+};
+
+var step = function() {
+    update();
+    render();
+    animate(step);
+};
+
+var update = function() {
+};
+
+var render = function() {
+    context.fillStyle = "#FFBF00";
+    context.fillRect(0, 0, width, height);
+};
