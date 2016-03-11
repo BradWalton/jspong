@@ -7,6 +7,8 @@ var animate = window.requestAnimationFrame ||
     window.mozRequestAnimationFrame ||
     function(callback) { window.setTimeout(callback, 1000/60) };
 
+//Using the createElement method to create the canvas for the pong game field.
+
 var canvas = document.createElement('canvas');
 var width = 500;
 var height = 650;
@@ -19,6 +21,8 @@ window.onload = function() {
     animate(step);
 };
 
+//step will update and render objects and animate.
+
 var step = function() {
     update();
     render();
@@ -27,6 +31,8 @@ var step = function() {
 
 var update = function() {
 };
+
+// Creating paddles and ball, giving them dimension and set speeds.
 
 function paddle (x, y, width, height){
     this.x = x;
@@ -59,6 +65,8 @@ function Ball (x,y){
     this.radius = 5;
 }
 
+//adding properties to the render function on each object.
+
 Player.prototype.render = function() {
     this.paddle.render();
 };
@@ -77,6 +85,8 @@ Ball.prototype.render = function(){
 var Player = new Player();
 var Computer = new Computer();
 var Ball = new Ball (250, 300);
+
+//render function used fillstyle and fillrect methods to make the background.
 
 var render = function(){
     context.fillStyle = "#FFBF00";
