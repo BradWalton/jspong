@@ -42,23 +42,16 @@ paddle.prototype.render = function (){
     context.fillRect(this.x, this.y, this.width, this.height);
 };
 
-function player(){
-    this.paddle = new paddle(175, 580, 50, 10);
+function Player(){
+    this.paddle = new paddle (230, 625, 50, 10);
 }
 
-function computer() {
-    this.paddle = new paddle(175, 10, 50, 10);
+function Computer() {
+    this.paddle = new paddle(225, 10, 50, 10);
 }
 
-player.prototype.render = function(){
-    this.player.render();
-};
 
-computer.prototype.render = function(){
-    this.player.render();
-};
-
-function ball (x,y){
+function Ball (x,y){
     this.x= x;
     this.y= y;
     this.x_speed = 0;
@@ -66,21 +59,29 @@ function ball (x,y){
     this.radius = 5;
 }
 
-ball.prototype.render = function(){
+Player.prototype.render = function() {
+    this.paddle.render();
+};
+
+Computer.prototype.render = function() {
+    this.paddle.render();
+};
+
+Ball.prototype.render = function(){
     context.beginPath();
     context.arc(this.x, this.y, this.radius, 2 * Math.PI, false);
     context.fillStyle= "#000000";
     context.fill();
 };
 
-var player = new player();
-var computer = new computer();
-var ball = new ball (200, 300);
+var Player = new Player();
+var Computer = new Computer();
+var Ball = new Ball (250, 300);
 
 var render = function(){
     context.fillStyle = "#FFBF00";
     context.fillRect(0, 0, width, height);
-    player.render();
-    computer.render();
-    ball.render();
+    Player.render();
+    Computer.render();
+    Ball.render();
 }
