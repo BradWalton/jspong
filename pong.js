@@ -115,7 +115,7 @@ Computer.prototype.update = function(ball) {
     this.paddle.move(diff, 0);
     if(this.paddle.x < 0) {
         this.paddle.x = 0;
-    } else if (this.paddle.x + this.paddle.width > 400) {
+    } else if (this.paddle.x + this.paddle.width > 500) {
         this.paddle.x = 500 - this.paddle.width;
     }
 };
@@ -149,7 +149,7 @@ function Ball (x,y){
     this.x= x;
     this.y= y;
     this.x_speed = 0;
-    this.y_speed = 5;
+    this.y_speed = 3;
     this.radius = 5;
 }
 
