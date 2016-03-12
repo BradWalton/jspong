@@ -48,12 +48,12 @@ Ball.prototype.update = function(paddle1, paddle2) {
     if(this.x - 5 < 0) { // hitting the left wall
         this.x = 5;
         this.x_speed = -this.x_speed;
-    } else if(this.x + 5 > 400) { // hitting the right wall
+    } else if(this.x + 5 > 500) { // hitting the right wall
         this.x = 395;
         this.x_speed = -this.x_speed;
     }
 
-    if(this.y < 0 || this.y > 600) { // a point was scored
+    if(this.y < 0 || this.y > 650) { // a point was scored
         this.x_speed = 0;
         this.y_speed = 3;
         this.x = 200;
@@ -98,8 +98,8 @@ paddle.prototype.move = function(x, y) {
     if(this.x < 0) { // all the way to the left
         this.x = 0;
         this.x_speed = 0;
-    } else if (this.x + this.width > 400) { // all the way to the right
-        this.x = 400 - this.width;
+    } else if (this.x + this.width > 500) { // all the way to the right
+        this.x = 500 - this.width;
         this.x_speed = 0;
     }
 }
@@ -116,7 +116,7 @@ Computer.prototype.update = function(ball) {
     if(this.paddle.x < 0) {
         this.paddle.x = 0;
     } else if (this.paddle.x + this.paddle.width > 400) {
-        this.paddle.x = 400 - this.paddle.width;
+        this.paddle.x = 500 - this.paddle.width;
     }
 };
 
@@ -149,7 +149,7 @@ function Ball (x,y){
     this.x= x;
     this.y= y;
     this.x_speed = 0;
-    this.y_speed = 3;
+    this.y_speed = 5;
     this.radius = 5;
 }
 
