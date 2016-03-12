@@ -29,6 +29,8 @@ var step = function() {
     animate(step);
 };
 
+//Update function
+
 var update = function() {
     Ball.update(Player.paddle, Computer.paddle);
 };
@@ -72,6 +74,33 @@ Ball.prototype.update = function(paddle1, paddle2) {
         }
     }
 };
+
+Player.prototype.update = function() {
+    for(var key in keysDown) {
+        var value = Number(key);
+        if(value == 37) { // left arrow
+            this.paddle.move(-4, 0);
+        } else if (value == 39) { // right arrow
+            this.paddle.move(4, 0);
+        } else {
+            this.paddle.move(0, 0);
+        }
+    }
+};
+
+paddle.prototype.move = function(x, y) {
+    this.x += x;
+    this.y += y;
+    this.x_speed = x;
+    this.y_speed = y;
+    if(this.x < 0) { // all the way to the left
+        this.x = 0;
+        this.x_speed = 0;
+    } else if (this.x + this.width > 400) { // all the way to the right
+        this.x = 400 - this.width;
+        this.x_speed = 0;
+    }
+}
 
 // Creating paddles and ball, giving them dimension and set speeds.
 
@@ -136,3 +165,15 @@ var render = function(){
     Computer.render();
     Ball.render();
 }
+
+//Controls
+
+var keysDown = {};
+
+window.addEventListener("keydown", function(event) {
+    keysDown[event.keyCode] = true;
+});
+
+window.addEventListener("keyup", function(event) {
+    delete keysDown[event.keyCode];
+});
